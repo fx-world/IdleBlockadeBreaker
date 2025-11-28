@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjx12sokwfj0d"]
+
+[ext_resource type="Texture2D" uid="uid://clai6i3j7ag0l" path="res://sprites/background/star.png" id="1_nk3k3"]
+[ext_resource type="Script" uid="uid://cxrmqerl64i4i" path="res://scenes/enemies/bullet_effect.gd" id="2_7n5j4"]
+
+[node name="BulletEffect" type="Sprite2D"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_nk3k3")
+script = ExtResource("2_7n5j4")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://btax1rxk5l2lo"]
+
+[ext_resource type="PackedScene" uid="uid://rjd162g0a7eg" path="res://scenes/enemies/base_enemy.tscn" id="1_6t8ru"]
+[ext_resource type="Script" uid="uid://crn1ls7cjnlsq" path="res://scenes/enemies/enemy_scout.gd" id="2_mqrbs"]
+
+[node name="EnemyScout" instance=ExtResource("1_6t8ru")]
+script = ExtResource("2_mqrbs")
+
+[node name="Sprite2D" parent="." index="0"]
+rotation = -1.5707964
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="1"]
+rect = Rect2(-11, -14, 30, 29)
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(2, 0)
+
+[node name="Node2D" type="Node2D" parent="ShootingPositions" index="0"]
+position = Vector2(-8, 0)

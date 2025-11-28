@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4ovxfs2p5o30"]
+
+[ext_resource type="PackedScene" uid="uid://rjd162g0a7eg" path="res://scenes/enemies/base_enemy.tscn" id="1_mcsfq"]
+[ext_resource type="Texture2D" uid="uid://bhjq41132gvs5" path="res://sprites/enemies/klaed/Kla'ed - Dreadnought - Base.png" id="2_a4kas"]
+[ext_resource type="Script" uid="uid://daav0yn2llijy" path="res://scenes/enemies/enemy_dreadnought.gd" id="2_mpsov"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mpsov"]
+size = Vector2(100, 72)
+
+[node name="EnemyDreadnought" instance=ExtResource("1_mcsfq")]
+script = ExtResource("2_mpsov")
+stopPositionX = 500.0
+life = 1000
+knowledgeOnKill = 100
+materialOnKill = 100
+
+[node name="Sprite2D" parent="." index="0"]
+rotation = -1.5707964
+texture = ExtResource("2_a4kas")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="1"]
+rect = Rect2(-53, -54, 113, 110)
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_mpsov")
+
+[node name="Node2D" type="Node2D" parent="ShootingPositions" index="0"]
+position = Vector2(-36, -32)
+
+[node name="Node2D2" type="Node2D" parent="ShootingPositions" index="1"]
+position = Vector2(-35, 31)
+
+[node name="Node2D3" type="Node2D" parent="ShootingPositions" index="2"]
+position = Vector2(-51, -1)

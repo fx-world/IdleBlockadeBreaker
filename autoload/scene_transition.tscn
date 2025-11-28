@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5o26wosi56s7"]
+
+[ext_resource type="Script" uid="uid://wibct24rlrxs" path="res://autoload/scene_transition.gd" id="1_iv46m"]
+[ext_resource type="Shader" uid="uid://byg8i8h8uo21s" path="res://scenes/menu/crt.gdshader" id="2_0pvkb"]
+
+[sub_resource type="Animation" id="Animation_0pvkb"]
+resource_name = "RESET"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_myuox"]
+resource_name = "dissolve"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nknyf"]
+_data = {
+&"RESET": SubResource("Animation_0pvkb"),
+&"dissolve": SubResource("Animation_myuox")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_myuox"]
+shader = ExtResource("2_0pvkb")
+
+[sub_resource type="QuadMesh" id="QuadMesh_nknyf"]
+size = Vector2(640, 480)
+subdivide_width = 640
+subdivide_depth = 480
+
+[node name="SceneTransition" type="CanvasLayer"]
+script = ExtResource("1_iv46m")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.21382484, 0.5195429, 0.63328475, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nknyf")
+}
+
+[node name="CRTEffect" type="CanvasLayer" parent="."]
+offset = Vector2(320, 240)
+transform = Transform2D(1, 0, 0, 1, 320, 240)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CRTEffect"]
+material = SubResource("ShaderMaterial_myuox")
+mesh = SubResource("QuadMesh_nknyf")

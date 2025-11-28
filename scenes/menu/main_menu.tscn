@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdcvfcb1gtaco"]
+
+[ext_resource type="Script" uid="uid://bf0c26wl0kptu" path="res://scenes/menu/main_menu.gd" id="1_nl8w3"]
+[ext_resource type="Texture2D" uid="uid://clai6i3j7ag0l" path="res://sprites/background/star.png" id="2_kiqgm"]
+[ext_resource type="FontFile" uid="uid://b4mpl3mjvf8g5" path="res://fonts/karmatic-arcade/ka1.ttf" id="4_hj162"]
+[ext_resource type="Theme" uid="uid://7ryux2bnlekl" path="res://scenes/menu/main_theme.tres" id="5_xn6kt"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_nl8w3")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+centered = false
+
+[node name="MovingStars" type="CPUParticles2D" parent="Background"]
+position = Vector2(640, 240)
+amount = 50
+texture = ExtResource("2_kiqgm")
+lifetime = 10.0
+preprocess = 10.0
+speed_scale = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(1, 240)
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 70.0
+initial_velocity_max = 90.62
+angle_max = 360.0
+scale_amount_min = 0.01
+scale_amount_max = 0.05
+
+[node name="Title" type="Label" parent="."]
+offset_left = 45.0
+offset_top = 31.0
+offset_right = 322.0
+offset_bottom = 175.0
+theme_override_fonts/font = ExtResource("4_hj162")
+theme_override_font_sizes/font_size = 45
+text = "Idle
+Blockage
+Breaker"
+
+[node name="VFlowContainer" type="VFlowContainer" parent="."]
+offset_left = 385.0
+offset_top = 222.0
+offset_right = 554.0
+offset_bottom = 397.0
+theme = ExtResource("5_xn6kt")
+
+[node name="Start" type="Button" parent="VFlowContainer"]
+layout_mode = 2
+text = "Start New Game"
+flat = true
+
+[node name="Options" type="Button" parent="VFlowContainer"]
+layout_mode = 2
+text = "Options"
+flat = true
+
+[node name="Credits" type="Button" parent="VFlowContainer"]
+layout_mode = 2
+text = "Credits"
+flat = true
+
+[node name="Exit" type="Button" parent="VFlowContainer"]
+layout_mode = 2
+text = "Exit"
+flat = true
+
+[connection signal="pressed" from="VFlowContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VFlowContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VFlowContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="VFlowContainer/Exit" to="." method="_on_exit_pressed"]

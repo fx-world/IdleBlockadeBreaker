@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://diudo4ndmbv07"]
+
+[ext_resource type="Script" uid="uid://v1o1bwf832tg" path="res://scenes/game/knowledge_material_hud.gd" id="1_517qr"]
+
+[node name="KnowledgeMaterialHud" type="Label"]
+text = "0K | 0M"
+script = ExtResource("1_517qr")

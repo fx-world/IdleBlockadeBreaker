@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b6r34ng8bd0w4"]
+
+[node name="MainGameHud" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0

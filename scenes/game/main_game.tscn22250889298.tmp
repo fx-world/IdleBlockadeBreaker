@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://bwbow4pm5fs0y"]
+
+[ext_resource type="Script" uid="uid://b30dybcycrva" path="res://scenes/game/main_game.gd" id="1_0rdsr"]
+[ext_resource type="Texture2D" uid="uid://clai6i3j7ag0l" path="res://sprites/background/star.png" id="1_d2op2"]
+[ext_resource type="PackedScene" uid="uid://cbvycrln6g2d6" path="res://scenes/game/main_ship.tscn" id="1_s3esy"]
+[ext_resource type="PackedScene" uid="uid://bgfx7vu3ueh2n" path="res://scenes/enemies/asteroid.tscn" id="2_72e8q"]
+[ext_resource type="Texture2D" uid="uid://l3dc83gqycbw" path="res://sprites/hud/lifebar_background.png" id="5_ygxny"]
+[ext_resource type="Texture2D" uid="uid://d1qn1n8jc1sce" path="res://sprites/hud/lifebar_bar.png" id="6_wi4c7"]
+[ext_resource type="Script" uid="uid://cgqbjctfxafvb" path="res://scenes/game/camera.gd" id="7_wi4c7"]
+
+[node name="MainGame" type="Node"]
+script = ExtResource("1_0rdsr")
+
+[node name="HUD" type="Control" parent="."]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LifeBar" type="TextureProgressBar" parent="HUD"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 110.0
+offset_bottom = 50.0
+value = 100.0
+texture_under = ExtResource("5_ygxny")
+texture_progress = ExtResource("6_wi4c7")
+
+[node name="Button" type="Button" parent="HUD"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -43.0
+offset_right = -9.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Retreat"
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+centered = false
+
+[node name="MovingStars" type="CPUParticles2D" parent="Background"]
+position = Vector2(640, 240)
+amount = 50
+texture = ExtResource("1_d2op2")
+lifetime = 10.0
+preprocess = 10.0
+emission_shape = 3
+emission_rect_extents = Vector2(1, 240)
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 70.0
+initial_velocity_max = 90.62
+angle_max = 360.0
+scale_amount_min = 0.01
+scale_amount_max = 0.05
+
+[node name="MainShip" parent="." instance=ExtResource("1_s3esy")]
+z_index = 50
+position = Vector2(56, 241)
+
+[node name="Asteroid" parent="." instance=ExtResource("2_72e8q")]
+position = Vector2(587, 242)
+
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("7_wi4c7")
+
+[connection signal="pressed" from="HUD/Button" to="." method="_on_retreat_pressed"]

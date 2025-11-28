@@ -1,0 +1,116 @@
+[gd_scene load_steps=5 format=3 uid="uid://185p83snxt0m"]
+
+[ext_resource type="PackedScene" uid="uid://dhnvt2svihgu5" path="res://scenes/skills/skill_node.tscn" id="1_0cq54"]
+[ext_resource type="Script" uid="uid://c5x4kucfht5lq" path="res://scenes/skills/skill_tree.gd" id="1_2rfa0"]
+[ext_resource type="Theme" uid="uid://7ryux2bnlekl" path="res://scenes/menu/main_theme.tres" id="1_4bxlx"]
+[ext_resource type="PackedScene" uid="uid://diudo4ndmbv07" path="res://scenes/game/knowledge_material_hud.tscn" id="4_yfour"]
+
+[node name="SkillTree" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4bxlx")
+script = ExtResource("1_2rfa0")
+
+[node name="Weapons" parent="." instance=ExtResource("1_0cq54")]
+layout_mode = 1
+offset_left = 215.0
+offset_top = 46.0
+offset_right = -375.0
+offset_bottom = -384.0
+text = "Weapons"
+skillName = "weapons1"
+description = "We should add weypons to the ship."
+materialCostPerLevel = 1
+
+[node name="Firepower" parent="Weapons" instance=ExtResource("1_0cq54")]
+layout_mode = 1
+offset_left = -170.0
+offset_top = 56.0
+offset_right = -53.0
+offset_bottom = 91.0
+text = "Firepower
+"
+skillName = "firepower1"
+description = "More Damage"
+maxLevel = 10
+materialCostPerLevel = 2
+
+[node name="Firerate" parent="Weapons" instance=ExtResource("1_0cq54")]
+layout_mode = 0
+offset_left = -19.0
+offset_top = 55.0
+offset_right = 98.0
+offset_bottom = 90.0
+text = "Firerate
+"
+skillName = "firerate1"
+description = "Faster Damage"
+maxLevel = 10
+knowledgeCostPerLevel = 2
+
+[node name="AI" parent="." instance=ExtResource("1_0cq54")]
+layout_mode = 0
+offset_left = 453.0
+offset_top = 44.0
+offset_right = 490.0
+offset_bottom = 79.0
+text = "AI"
+skillName = "ai1"
+description = "The ship needs an AI core."
+knowledgeCostPerLevel = 1
+
+[node name="Armor" parent="AI" instance=ExtResource("1_0cq54")]
+layout_mode = 0
+offset_left = -19.0
+offset_top = 56.0
+offset_right = 52.0
+offset_bottom = 91.0
+text = "Armor"
+skillName = "armor1"
+description = "Better armor should help to survive longer."
+maxLevel = 10
+knowledgeCostPerLevel = 2
+materialCostPerLevel = 2
+
+[node name="DeployButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -44.0
+offset_right = -10.0
+offset_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Deploy
+"
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = -42.0
+offset_right = 98.0
+offset_bottom = -11.0
+grow_vertical = 0
+text = "Surrender"
+
+[node name="KnowledgeMaterialHud" parent="." instance=ExtResource("4_yfour")]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 10.0
+offset_right = 501.0
+offset_bottom = 29.0
+horizontal_alignment = 2
+
+[connection signal="pressed" from="DeployButton" to="." method="_on_deploy_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

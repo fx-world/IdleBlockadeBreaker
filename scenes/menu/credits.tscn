@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://cca85lku5nj8u"]
+
+[ext_resource type="Theme" uid="uid://7ryux2bnlekl" path="res://scenes/menu/main_theme.tres" id="1_4y82v"]
+[ext_resource type="Script" uid="uid://bhtytgu82bvsc" path="res://scenes/menu/credits.gd" id="1_ff4am"]
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_ff4am")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 85.0
+offset_top = 10.0
+offset_right = 557.0
+offset_bottom = 700.0
+theme = ExtResource("1_4y82v")
+bbcode_enabled = true
+text = "[center][b]Development[/b][/center]
+
+Idea and development fx-world
+
+[hr]
+
+[center][b]Sprites[/b][/center]
+
+[i]Void[/i]
+Commissioned from: Baldur ([url]https://twitter.com/the__baldur[/url])
+Distributed by Foozle ([url]http://www.foozle.io[/url])
+
+License: (Creative Commons Zero, CC0)
+[url]http://creativecommons.org/publicdomain/zero/1.0/[/url]
+
+[hr]
+
+[center][b]Fonts[/b][/center]
+
+[i]BoldPixels[/i] is a Free Pixel Art Font
+Made by Yūki Pixels (@yukipixels)
+Licensed under Creative Commons Attribution ShareAlike v4.0 International
+
+[url]https://creativecommons.org/licenses/by-sa/4.0/deed.en[/url]
+[url]https://yukipixels.itch.io/boldpixels[/url]
+
+[i]Karmatic Arcade[/i]
+1001Fonts Free For Commercial Use License (FFC)
+
+[url]https://1001fonts.com[/url]
+
+[hr]
+
+[center][b]Music[/b][/center]
+
+Track: HoliznaCC0 - Mercury
+Link: [url]https://freemusicarchive.org/music/holiznacc0/interstellar-pop-songs/mercury-1/[/url]
+License: CC0 1.0 Universal ([url]https://creativecommons.org/publicdomain/zero/1.0/[/url])
+
+Track: Justin Tuijl - Populationcull
+Link: [url]https://freemusicarchive.org/music/justin-tuijl/distopiautopia/populationcull/[/url]
+License: Attribution 4.0 International ([url]https://creativecommons.org/licenses/by/4.0/[/url])
+
+Track: Kirk Osamayo - Boss Fight
+Link: [url]https://freemusicarchive.org/music/kirk-osamayo/red-season-3/boss-fight/[/url]
+License: Attribution 4.0 International ([url]https://creativecommons.org/licenses/by/4.0/[/url])
+
+
+"
+fit_content = true
+scroll_active = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, 1000)
+anchor_mode = 0

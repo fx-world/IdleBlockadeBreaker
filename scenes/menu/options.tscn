@@ -1,0 +1,83 @@
+[gd_scene load_steps=4 format=3 uid="uid://doxobih3p6ec6"]
+
+[ext_resource type="Script" uid="uid://csrmgd2oowj0s" path="res://scenes/menu/options.gd" id="1_5ak6t"]
+[ext_resource type="Theme" uid="uid://7ryux2bnlekl" path="res://scenes/menu/main_theme.tres" id="1_ubx11"]
+[ext_resource type="Texture2D" uid="uid://clai6i3j7ag0l" path="res://sprites/background/star.png" id="2_ubx11"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ubx11")
+script = ExtResource("1_5ak6t")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+centered = false
+
+[node name="MovingStars" type="CPUParticles2D" parent="Background"]
+position = Vector2(640, 240)
+amount = 50
+texture = ExtResource("2_ubx11")
+lifetime = 10.0
+preprocess = 10.0
+speed_scale = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(1, 240)
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 70.0
+initial_velocity_max = 90.62
+angle_max = 360.0
+scale_amount_min = 0.01
+scale_amount_max = 0.05
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 205.0
+offset_top = 180.0
+offset_right = 439.0
+offset_bottom = 293.0
+columns = 2
+
+[node name="EffectsLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Effects Volume"
+
+[node name="EffectsSlider" type="HSlider" parent="GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+min_value = -80.0
+max_value = 24.0
+
+[node name="MusicLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Music Volume"
+
+[node name="MusicSlider" type="HSlider" parent="GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+min_value = -80.0
+max_value = 24.0
+
+[node name="CRTLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "CRT Effect"
+
+[node name="CRTCheckBox" type="CheckBox" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Back
+"
+flat = true
+
+[connection signal="value_changed" from="GridContainer/EffectsSlider" to="." method="_on_effects_slider_value_changed"]
+[connection signal="value_changed" from="GridContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="toggled" from="GridContainer/CRTCheckBox" to="." method="_on_crt_check_box_toggled"]
+[connection signal="pressed" from="GridContainer/Back" to="." method="_on_back_pressed"]

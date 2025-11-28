@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://7ryux2bnlekl"]
+
+[ext_resource type="FontFile" uid="uid://cyeemo8nvmqv5" path="res://fonts/boldpixels/BoldPixels.ttf" id="1_ylm6w"]
+
+[resource]
+Button/font_sizes/font_size = 26
+Button/fonts/font = ExtResource("1_ylm6w")
+Label/font_sizes/font_size = 18
+Label/fonts/font = ExtResource("1_ylm6w")
+RichTextLabel/fonts/normal_font = ExtResource("1_ylm6w")
