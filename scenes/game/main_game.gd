@@ -45,8 +45,8 @@ func _physics_process(delta: float) -> void:
 func on_mainship_life_changed(life: int, maxLife: int):
 	if life < lifeBar.value:
 		camera.shake(lifeBar.value - life)
-	lifeBar.value = life
 	lifeBar.max_value = maxLife
+	lifeBar.value = life	
 	
 	if life <= 0:
 		SceneTransition.change_scene("res://scenes/skills/skill_tree.tscn")

@@ -1,4 +1,4 @@
-extends Control
+extends Button
 class_name SkillNode
 
 @onready
@@ -71,6 +71,6 @@ func canBuy() -> bool:
 	return GameState.owns(knowledgeCostPerLevel, materialCostPerLevel) and level < maxLevel
 
 func buy() -> void:
-	if GameState.buy(knowledgeCostPerLevel, materialCostPerLevel):
+	if canBuy() and GameState.buy(knowledgeCostPerLevel, materialCostPerLevel):
 		level += 1
 		GameState.setSkill(skillName, level)
