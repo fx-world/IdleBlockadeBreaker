@@ -87,33 +87,39 @@ script = ExtResource("7_wi4c7")
 
 [node name="Wave1" parent="." instance=ExtResource("7_11nld")]
 position = Vector2(670, 26)
+scale = Vector2(1e-05, 1e-05)
 enemyPrefab = ExtResource("8_qsdf0")
 amount = 10
 
 [node name="Wave2" parent="." instance=ExtResource("7_11nld")]
 position = Vector2(676, 371)
+scale = Vector2(1e-05, 1e-05)
 enemyPrefab = ExtResource("8_qsdf0")
 initDelay = 10.0
 amount = 10
 
 [node name="Wave3" parent="." instance=ExtResource("7_11nld")]
 position = Vector2(671, 241)
+scale = Vector2(1e-05, 1e-05)
 enemyPrefab = ExtResource("8_qsdf0")
 initDelay = 20.0
 amount = 10
 
 [node name="WaveFinal1" parent="." instance=ExtResource("7_11nld")]
 position = Vector2(670, 93)
+scale = Vector2(1e-05, 1e-05)
 enemyPrefab = ExtResource("10_25xmc")
 initDelay = 30.0
 
 [node name="WaveFinal2" parent="." instance=ExtResource("7_11nld")]
 position = Vector2(670, 241)
+scale = Vector2(1e-05, 1e-05)
 enemyPrefab = ExtResource("10_25xmc")
 initDelay = 30.0
 
 [node name="WaveFinal3" parent="." instance=ExtResource("7_11nld")]
 position = Vector2(677, 375)
+scale = Vector2(1e-05, 1e-05)
 enemyPrefab = ExtResource("10_25xmc")
 initDelay = 30.0
 

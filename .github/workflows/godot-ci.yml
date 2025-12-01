@@ -1,6 +1,10 @@
 name: "godot-ci export"
-on: push
-
+on: 
+  push:
+    branches: [ main ]
+  release:
+    types: [created]
+    
 env:
   GODOT_VERSION: 4.5
   PROJECT_PATH: .
@@ -52,3 +56,14 @@ jobs:
         with:
           name: ${{ matrix.artifactName }}
           path: build/${{ matrix.path }}
+
+      - name: Deploy
+        if: ${{ github.event_name == 'release' && github.event.types == 'created' }}
+        uses: Ayowel/butler-to-itch@v1      
+        with:
+          butler_key: ${{ secrets.BUTLER_CREDENTIALS }}
+          itch_user: fx-world
+          itch_game: IdleBlockadeBreaker
+          version: ${{ github.ref_name }}
+          files: |
+            ${{ matrix.path }}  build/${{ matrix.path }}
