@@ -3,7 +3,7 @@ on:
   push:
     branches: [ main ]
   release:
-    types: [created]
+    types: [published]
     
 env:
   GODOT_VERSION: 4.5
@@ -58,7 +58,7 @@ jobs:
           path: build/${{ matrix.path }}
 
       - name: Deploy
-        if: ${{ github.event_name == 'release' && github.event.types == 'created' }}
+        if: ${{ github.event_name == 'release' && github.event.types == 'published' }}
         uses: Ayowel/butler-to-itch@v1      
         with:
           butler_key: ${{ secrets.BUTLER_CREDENTIALS }}
