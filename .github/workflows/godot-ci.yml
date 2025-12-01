@@ -58,7 +58,7 @@ jobs:
           path: build/${{ matrix.path }}
 
       - name: Deploy
-        if: ${{ github.event_name == 'release' && github.event.types == 'published' }}
+        if: ${{ github.event_name == 'release' }}
         uses: Ayowel/butler-to-itch@v1      
         with:
           butler_key: ${{ secrets.BUTLER_CREDENTIALS }}
